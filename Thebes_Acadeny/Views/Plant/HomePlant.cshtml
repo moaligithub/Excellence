@@ -1,0 +1,70 @@
+﻿@model Thebes_Acadeny.Models.Plant
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اختار اللي انت عايزه</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+        <div class="row portfolio-container">
+
+            <a asp-action="Pdf" asp-controller="Student" asp-route-id="@Model.PlantId">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106)); background: linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106));">
+                        </figure>
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>Pdf</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a asp-action="Video" asp-controller="Student" asp-route-id="@Model.PlantId">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106)); background: linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106));">
+                        </figure>
+
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>فيديوهات</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a asp-action="Posts" asp-controller="Student" asp-route-id="@Model.PlantId">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106)); background: linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106));">
+                        </figure>
+
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>بوستات</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a asp-action="Exam" asp-controller="Student" asp-route-id="@Model.PlantId">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106)); background: linear-gradient(-47deg, rgb(0, 148, 121), rgb(73, 22, 106));">
+                        </figure>
+
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>اختبارات</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+﻿@model Thebes_Acadeny.SpeciltiesViewModel
+@{
+    ViewData["Title"] = "UpDateSpecialties";
+}
+
+@if (Model != null)
+{
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل تخصص @Model.Name</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div>
+
+
+    <div class="page-section">
+        <div class="container">
+
+            <form asp-action="UpDateSpecialties" asp-controller="Home" asp-route-id="@Model.Id" class="contact-form mt-5" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="row mb-3">
+                    <div class="col-sm-12 py-2 wow fadeInLeft">
+                        <label style="text-align:right" for="fullName">الاسم</label>
+                        <input type="text" asp-for="@Model.Name" value="@Model.Name" class="form-control">
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+                </div>
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+
+}
+
+
+@section Script{
+    <partial name="Partial" />
+}

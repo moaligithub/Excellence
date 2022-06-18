@@ -1,0 +1,35 @@
+﻿@model Thebes_Acadeny.AddExamViewModel_1
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه امتحان جديد</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
+    <div class="container">
+           
+        <form asp-action="Cre1" asp-controller="Exam" class="contact-form mt-5">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">ادخل اسم الامتحان</label>
+                    <input type="text" asp-for="@Model.ExamName" class="form-control">
+                    <span asp-validation-for="@Model.ExamName" class="text-danger"></span> 
+                </div>
+
+                <input type="hidden" asp-for="@Model.AdminId" value="@Model.AdminId" />
+                <input type="hidden" asp-for="@Model.PlantId" value="@Model.PlantId" />
+                <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+            </div>
+            <input type="submit" value="استكمال" class="btn btn-info" asp-action="Cre1" asp-controller="Exam" />
+        </form>
+        
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

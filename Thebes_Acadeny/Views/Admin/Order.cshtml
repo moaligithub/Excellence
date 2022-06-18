@@ -1,0 +1,85 @@
+﻿@model Thebes_Acadeny.OrderViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">الطلبات</h1>
+        </div>
+    </div>
+</div>
+
+
+<section id="testimonials" class="section-bg wow fadeInUp">
+   
+    <div class="container sidebar-block">
+        <h2 class="text-center">Pdf</h2>
+        @foreach (var book in Model.Books)
+        {
+            <h5 style="text-align:right">@book.BookName</h5><br />
+            <h5 style="text-align:right">@Model.Plants.Where(p => p.PlantId == book.Plant.PlantId).FirstOrDefault().PlantName</h5><br />
+            <h5 style="text-align:right">@Model.Admins.Where(a => a.AdminId == book.AdminIdFk).FirstOrDefault().FullName</h5><br />
+            <a style="float:right" asp-action="Profile" asp-route-id="@book.AdminIdFk" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a><br />
+            <div style="clear:right"></div>
+
+            <a asp-action="Delete" asp-controller="Books" asp-route-id="@book.BookId" class="btn btn-outline-danger">حذف</a>
+
+            <a href="@book.PdfUrl" target="_blank" class="btn btn-outline-warning">عرض</a>
+            <a asp-action="Assent" asp-controller="Books" asp-route-id="@book.BookId" asp-route-plid="@Model.Plants.Where(p => p.PlantId == book.Plant.PlantId).FirstOrDefault().PlantId" class="btn btn-outline-success">قبول</a>
+            <hr style="padding:5px;border-radius:5%;color:blueviolet" />
+        }
+    </div>
+    <br />
+    <div class="container sidebar-block">
+        <h2 class="text-center">الفيديوهات</h2>
+        @foreach (var video in Model.Videos)
+        {
+            <h5 style="text-align:right">@video.Text</h5><br />
+            <h5 style="text-align:right">@Model.Plants.Where(p => p.PlantId == video.Plant.PlantId).FirstOrDefault().PlantName</h5><br />
+            <h5 style="text-align:right">@Model.Admins.Where(a => a.AdminId == video.AdminIdFk).FirstOrDefault().FullName</h5><br />
+            <a style="float:right" asp-action="Profile" asp-route-id="@video.AdminIdFk" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a><br />
+            <div style="clear:right"></div>
+
+            <a asp-action="Delete" asp-controller="Video" asp-route-id="@video.VideoId" class="btn btn-outline-danger">حذف</a>
+            <a href="@video.VideoUrl" class="btn btn-outline-warning">عرض</a>
+            <a asp-action="Assent" asp-controller="Video" asp-route-id="@video.VideoId" asp-route-plid="@Model.Plants.Where(p => p.PlantId == video.Plant.PlantId).FirstOrDefault().PlantId" class="btn btn-outline-success">قبول</a>
+            <hr style="padding:5px;border-radius:5%;color:blueviolet" />
+        }
+    </div>
+    <br />
+
+    <div class="container sidebar-block">
+        <h2 class="text-center">البوستات</h2>
+        @foreach (var post in Model.Posts)
+        {
+            <h5 style="text-align:right">@Model.Plants.Where(p => p.PlantId == post.Plant.PlantId).FirstOrDefault().PlantName</h5><br />
+            <h5 style="text-align:right">@Model.Admins.Where(a => a.AdminId == post.AdminIdFk).FirstOrDefault().FullName</h5><br />
+            <a style="float:right" asp-action="Profile" asp-route-id="@post.AdminIdFk" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a><br />
+            <div style="clear:right"></div>
+
+            <a asp-action="Delete" asp-controller="Post" controls="controls" asp-route-id="@post.PostId" class="btn btn-outline-danger">حذف</a>
+            <a asp-action="Details" asp-controller="Post" asp-route-id="@post.PostId" class="btn btn-outline-warning">عرض</a>
+            <a asp-action="Assent" asp-controller="Post" asp-route-id="@post.PostId" asp-route-plid="@Model.Plants.Where(p => p.PlantId == post.Plant.PlantId).FirstOrDefault().PlantId" class="btn btn-outline-success">قبول</a>
+            <hr style="padding:5px;border-radius:5%;color:blueviolet" />
+        }
+    </div>
+    <br />
+
+    <div class="container sidebar-block">
+        <h2 class="text-center">الاختبارات</h2>
+        @foreach (var exa in Model.Exams)
+        {
+            <h5 style="text-align:right">@exa.Title</h5><br />
+            <h5 style="text-align:right">@Model.Plants.Where(p => p.PlantId == exa.Plant.PlantId).FirstOrDefault().PlantName</h5><br />
+            <h5 style="text-align:right">@Model.Admins.Where(a => a.AdminId == exa.AdminIdFk).FirstOrDefault().FullName</h5><br />
+            <a style="float:right" asp-action="Profile" asp-route-id="@exa.AdminIdFk" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a><br />
+            <div style="clear:right"></div>
+
+            <a asp-action="Delete" asp-controller="Exam" asp-route-id="@exa.ExamId" class="btn btn-outline-danger">حذف</a>
+            <a asp-action="Details" asp-controller="Exam" asp-route-id="@exa.ExamId" class="btn btn-outline-warning">عرض</a>
+            <a asp-action="Assent" asp-controller="Exam" asp-route-id="@exa.ExamId" asp-route-plid="@Model.Plants.Where(p => p.PlantId == exa.Plant.PlantId).FirstOrDefault().PlantId" class="btn btn-outline-success">قبول</a>
+            <hr style="padding:5px;border-radius:5%;color:blueviolet" />
+        }
+    </div>
+    <br />
+
+</section>

@@ -1,0 +1,157 @@
+﻿@model Thebes_Acadeny.DetailsExamViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">@Model.Exam.Title</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page-section section-bg">
+    <div class="container">
+        <form asp-action="DisplayExam2" asp-controller="Exam" enctype="multipart/form-data">
+
+            <div class="col-lg-12 sidebar-block wow fadeInUp">
+                <div style="display:block" class="text-center">
+                    <article class="blog-details">
+                        <div class="img-place custom-img-1">
+                            <img src="~/Tmb1/img/Admins/@Model.Admin.ImageUrl" style="width:200px" class="circle-shape" alt="">
+                        </div>
+                        <br><hr>
+                        <div style="text-align: center;">
+                            <h1>@Model.Admin.FullName</h1>
+                        </div>
+
+                        <hr>
+                        <div class="text-center wow fadeInDown">
+                            <a asp-action="Profile" asp-controller="Admin" asp-route-id="@Model.Admin.AdminId" style="text-decoration:none" class="btn btn-outline-primary">عرض الصفحه الشخصيه</a>
+                        </div>
+
+                    </article>
+                </div>
+            </div>
+
+            <div class="sidebar-block row" style="margin-top:1%">
+                <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                    <label>الاسم الاول</label>
+                    <input type="text" style="text-align:right" asp-for="@Model.FirstName" class="form-control" required>
+                    <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="@Model.AdminName" value="@Model.Admin.FullName" />
+
+                <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                    <label>الاسم الثاني</label>
+                    <input type="text" style="text-align:right" asp-for="@Model.LastName" class="form-control" required>
+                    <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="container sidebar-block">
+                @{
+                    int count1 = 1;
+
+                }
+
+                @if (Model.Questions.Count() != 0)
+                {
+
+                    int index = 0;
+
+                    <h2 class="text-center">الاسئله الاختياري</h2>
+                    @foreach (var item in Model.Questions)
+                    {
+                        <div class="text-right">
+                            <h4 style="display:inline-block;float:right">@count1</h4>
+                            <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                            <h4 style="display:inline-block; float:right">@item.Title</h4>
+                            <div style="clear:both"></div>
+                            <br />
+                            @if (item.img != null)
+                            {
+                                <img src="~/Tmb1/img/ExamsImages/@item.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                                <br /><br />
+                            }
+                            <div style="clear:both"></div> 
+                            <select asp-for="@Model.True_Answer[index]" class="form-control" required>
+                                <option style="text-align:right" value="">اختر اجابه</option>
+                                @foreach (var ite in Model.Answers.Where(a => a.QuestionId == item.QuestionId))
+                                {
+
+                                    @if (ite.boolAnswer == true)
+                                    {
+                                        <option style="text-align:right" value="-2000">@ite.AnswerTitle</option>
+                                    }
+                                    else if (ite.boolAnswer == false)
+                                    {
+                                        <option style="text-align:right" value="@ite.AnswerId">@ite.AnswerTitle</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+
+                        count1++;
+                        index++;
+                        <hr />
+                    }
+                    <br />
+                }
+
+                @if (Model.Question_True_Or_Falses.Count() != 0)
+                {
+                    <h2 class="text-center">اسئله صح وخطا</h2>
+
+                    int index2 = 0;
+
+
+                    @foreach (var item2 in Model.Question_True_Or_Falses)
+                    {
+                        <div class="text-right">
+                            <h4 style="display:inline-block;float:right">@count1</h4>
+                            <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                            <h4 style="display:inline-block; float:right">@item2.Title</h4>
+                            <div style="clear:both"></div>
+                            <br />
+                            @if (item2.img != null)
+                            {
+                                <img src="~/Tmb1/img/ExamsImages/@item2.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                                <br /><br />
+                            }
+
+                            <div style="clear:both"></div>
+                            <select class="form-control" asp-for="@Model.True_Answer_2[index2]" required>
+                                <option style="text-align:right" value="">اختر اجابه</option>
+                                @if (item2.Answer == true)
+                                {
+                                    <option style="text-align:right" value="-4000">صح</option>
+                                    <option style="text-align:right" value="@item2.Id">خطا</option>
+                                }
+                                else if(item2.Answer == false)
+                                {
+                                    <option style="text-align:right" value="@item2.Id">صح</option>
+                                    <option style="text-align:right" value="-4000">خطا</option>
+                                }
+
+                            </select>
+                            <hr />
+                        </div>
+                        index2++;
+                        count1++;
+                    }
+                }
+
+            </div>
+            <input type="hidden" asp-for="@Model.Exam_Id" value="@Model.Exam.ExamId" />
+            <input type="hidden" asp-for="@Model.PlantId" value="@Model.PlantId" />
+            <div class="sidebar-block">
+                <div class="row justify-content-center">
+                    <input type="submit" class="btn btn-warning" value="ارسال الاجابات" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

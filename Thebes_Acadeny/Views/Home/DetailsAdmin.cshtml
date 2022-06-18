@@ -1,0 +1,101 @@
+﻿@model Thebes_Acadeny.IndexViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">قائمه المشرفين</h1>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+<section id="testimonials" class="section-bg wow fadeInUp">
+    
+    <div class="container sidebar-block">
+        <div class="col-lg-12">
+            <h2 class="sidebar-title">المطور والمؤسس</h2>
+            @if (Model.owner != null)
+            {
+                <div class="col-lg-12 testimonial-item" style="float: left; margin-top: 5%; margin-bottom: 5%">
+                    <img src="~/Tmb1/img/Admins/@Model.owner.ImageUrl" class="testimonial-img" alt="" style="width:200px;height:200px">
+                    <h3 style="font-size:40px">@Model.owner.FullName</h3>
+                    <h4 style="font-size:30px"> @Model.owner.Specialties.SpecialtiesName / @Model.owner.Level.LevelName</h4>
+                    <p>
+                        <img style="display:inline-block" src="~/Tmb1/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                        <span style="display:inline-block;font-size:20px">مطور ومؤسس الموقع</span>
+                        <img style="display:inline-block" src="~/Tmb1/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                    </p>
+                    <a asp-action="Profile" asp-route-id="@Model.owner.AdminId" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a>
+                </div>
+
+            }
+            else
+            {
+                <h2 class="text-center">لا يوجد مطور</h2>
+            }
+        </div>
+
+        <div style="clear:both"></div>
+
+        @*<div class="col-lg-12">
+            <h2 class="sidebar-title">مشرفين مركز الشيماء لدي الموقع</h2>
+
+            @if (Model.adminShimaas.Count() != 0)
+            {
+                @foreach (var item in Model.adminShimaas)
+                {
+                    <div class="col-lg-6 testimonial-item" style="float: left; margin-top: 5%; margin-bottom: 5%">
+                        <img src="~/Tmb1/img/Admins/@item.ImageUrl" class="testimonial-img" alt="" style="width:200px;height:200px">
+                        <h3 style="font-size:40px">@item.FullName</h3>
+                        <p>
+                            <img style="display:inline-block" src="~/Tmb1/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                            <span style="display:inline-block;font-size:20px">مشرف لدي مركز الشيماء</span>
+                            <img style="display:inline-block" src="~/Tmb1/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                        </p>
+                        <a asp-action="Profile" asp-route-id="@item.AdminId" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a>
+                    </div>
+                }
+            }
+            else
+            {
+                <h2 class="text-center">لا يوجد مشرفين لدي مركز الشيماء</h2>
+            }
+
+        </div>
+
+        <div style="clear:both"></div>*@
+
+        <div class="col-lg-12">
+
+            <h2 class="sidebar-title">مشرفين لدي الموقع</h2>
+            @if (Model.admins.Count() != 0)
+            {
+                @foreach (var item in Model.admins)
+                {
+                    <div class="col-lg-6 testimonial-item" style="float: left; margin-top: 5%; margin-bottom: 5%">
+                        <img src="~/Tmb1/img/Admins/@item.ImageUrl" class="testimonial-img" alt="" style="width:200px;height:200px">
+                        <h3 style="font-size:40px">@item.FullName</h3>
+                        <h4 style="font-size:30px"> @item.Specialties.SpecialtiesName / @item.Level.LevelName</h4>
+                        <p>
+                            <img style="display:inline-block" src="~/Tmb1/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                            <span style="display:inline-block;font-size:20px">مشرف لدي الموقع</span>
+                            <img style="display:inline-block" src="~/Tmb1/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                        </p>
+                        <a asp-action="Profile" asp-route-id="@item.AdminId" asp-controller="Admin" class="btn btn-info">الصفحه الشخصيه</a>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <h2 class="text-center">لا يوجد مشرفين لدي الموقع</h2>
+            }
+        </div>
+
+    </div>
+</section>
+
+
+}

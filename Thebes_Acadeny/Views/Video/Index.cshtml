@@ -1,0 +1,38 @@
+﻿@model Thebes_Acadeny.VideoStViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">قائمه الفيديوهات</h1>
+        </div>
+    </div>
+</div>
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+        <div class="text-center">
+            <a style="font-size: 200%; margin: 1%" class="btn btn-secondary" asp-route-id="@Model.PlantId" asp-route-Adid="@Model.AdminId" asp-action="Create" asp-controller="Video"> اضافه ملف جديد</a>
+        </div>
+        <div class="row portfolio-container">
+
+            @if (Model.VideoAdmins.Count() != 0)
+            {
+                foreach (var item in Model.VideoAdmins)
+                {
+                    <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                        <div class="portfolio-wrap">
+                            <figure style="background: -webkit-linear-gradient(8deg, rgb(0, 0, 0), rgb(81, 0, 117)); background: linear-gradient(8deg, rgb(0, 0, 0), rgb(81, 0, 117)); ">
+                            </figure>
+
+                            <div class="portfolio-info" style="overflow:auto">
+                                <h4>@item.Text</h4>
+                                <a asp-action="Delete" asp-controller="Video" asp-route-plid="@Model.PlantId" asp-route-adid="@Model.AdminId" asp-route-id="@item.VideoId" class="btn btn-danger">حذف</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>

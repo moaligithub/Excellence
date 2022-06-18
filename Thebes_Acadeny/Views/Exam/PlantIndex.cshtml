@@ -1,0 +1,38 @@
+﻿@model Thebes_Acadeny.PlantViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اختار ماده</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+        <div class="row portfolio-container">
+
+            @if (Model.Plants != null)
+            {
+                foreach (var item in Model.Plants)
+                {
+                    <a asp-action="Index" asp-controller="Exam" asp-route-id="@item.PlantId" asp-route-idad="@Model.AdminId">
+                        <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                            <div class="portfolio-wrap">
+                                <figure style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); ">
+                                </figure>
+
+                                <div class="portfolio-info" style="overflow:auto">
+                                    <h4>@item.PlantName</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+        </div>
+    </div>
+</section>

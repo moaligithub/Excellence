@@ -1,0 +1,109 @@
+﻿@model Thebes_Acadeny.DetailsExamViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h3 class="font-weight-normal" style="color:#00ff92">@Model.Exam.Title</h3>
+        </div>
+    </div>
+</div>
+
+<section id="testimonials" class="section-bg wow fadeInUp">
+
+    <div class="container sidebar-block">
+        @{
+            int count1 = 1;
+
+        }
+        <h2 class="text-center">الاسئله الاختياري</h2>
+        @foreach (var item in Model.Questions)
+        {
+            <a asp-action="Edit2" asp-controller="Exam" asp-route-id="@item.QuestionId" style="float: left; margin-right: 5px;display:inline-block" class="btn btn-outline-info">تعديل</a>
+            <a asp-action="Delete2" asp-controller="Exam" asp-route-id="@item.QuestionId" asp-route-exid="@Model.Exam.ExamId" style="float: left; display: inline-block
+
+
+" class="btn btn-outline-danger">حذف</a>
+
+            <div style="clear:left"></div>
+
+            <div class="text-right">
+                <h4 style="display:inline-block;float:right">@count1</h4>
+                <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                <h4 style="display:inline-block; float:right">@item.Title</h4>
+                <div style="clear:both"></div>
+                <br />
+
+                @if (item.img != null)
+                {
+                    <img src="~/Tmb1/img/ExamsImages/@item.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                    <br /><br />
+                }
+
+                @{
+                    int count2 = 1;
+                }
+
+                @foreach (var ite in Model.Answers.Where(a => a.QuestionId == item.QuestionId))
+                {
+                    @if (ite.boolAnswer == true)
+                    {
+                        <h6 style="display:inline-block;float:right">@count2</h6>
+                        <h6 style="display: inline-block; float: right; margin-left: 5px; margin-right: 5px"> - </h6>
+                        <h6 style="display:inline-block; float:right;background-color:yellow">@ite.AnswerTitle</h6>
+                        <div style="clear:both"></div>
+                    }
+                    else if (ite.boolAnswer == false)
+                    {
+                        <h6 style="display:inline-block;float:right">@count2</h6>
+                        <h6 style="display: inline-block; float: right; margin-left: 5px; margin-right: 5px"> - </h6>
+                        <h6 style="display:inline-block; float:right;">@ite.AnswerTitle</h6>
+                        <div style="clear:both"></div>
+                    }
+                    count2++;
+                    <br />
+                }
+            </div>
+
+            count1++;
+            <hr />
+        }
+        <br />
+        <h2 class="text-center">اسئله صح وخطا</h2>
+        @foreach (var item2 in Model.Question_True_Or_Falses)
+        {
+            string boo = string.Empty;
+            if (item2.Answer == true)
+            {
+                boo = "صح";
+            }
+            else
+            {
+                boo = "خطا";
+            }
+            
+            <hr />
+            
+            <a asp-action="Edit3" asp-controller="Exam" asp-route-id="@item2.Id" style="float: left; margin-right: 5px;" class="btn btn-outline-info">تعديل</a>
+            <a asp-action="Delete3" asp-controller="Exam" asp-route-id="@item2.Id" asp-route-exid="@Model.Exam.ExamId" style="float: left;" class="btn btn-outline-danger">حذف</a>
+
+            <div style="clear:left"></div>
+
+            <div class="text-right">
+                <h4 style="display:inline-block;float:right">@count1</h4>
+                <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                <h4 style="display:inline-block; float:right">@item2.Title</h4>
+                <h4 style="display:inline-block; float:right;margin-left:10px;margin-right:10px">( <span style="background-color: yellow">@boo</span> )</h4>
+                <div style="clear:both"></div>
+                <br />
+                @if (item2.img != null)
+                {
+                    <img src="~/Tmb1/img/ExamsImages/@item2.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                }
+
+            </div>
+
+            count1++;
+            <hr />
+        }
+    </div>
+</section>

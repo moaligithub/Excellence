@@ -1,0 +1,48 @@
+﻿@model Thebes_Acadeny.AddExamViewModel_1
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه امتحان جديد</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section">
+    <div class="container">
+
+        <form class="contact-form mt-5" asp-controller="Exam" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.AdminId" value="@Model.AdminId" />
+                <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+                <input type="hidden" asp-for="@Model.ExamName" value="@Model.ExamName" />
+                <input type="hidden" asp-for="@Model.PlantId" value="@Model.PlantId" />
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">ادخل السؤال</label>
+                    <input type="text" asp-for="@Model.QusetionTrueOrFalse" class="form-control" value="">
+                    <span asp-validation-for="@Model.QusetionTrueOrFalse" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اضف صوره</label>
+                    <input type="file" asp-for="@Model.file" class="form-control"  accept="image/*">
+                    <span asp-validation-for="@Model.file" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اختر الاجابه</label>
+                    <select asp-for="@Model.AnswerTrueOrFalse" required class="form-control">
+                        <option value="">اختر اجابه</option>
+                        <option value="1">true</option>
+                        <option value="2">false</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" asp-action="Cre3"  value="استكفاء"  class="btn btn-danger" />
+            <input type="submit" asp-action="Cre2"  value="اضافه اسئله اخري"  class="btn btn-info" />
+        </form>
+    </div>
+</div>

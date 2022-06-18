@@ -1,0 +1,28 @@
+﻿@model Thebes_Acadeny.AddExamViewModel_1
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه امتحان جديد</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page-section">
+    <div class="container">
+        <form class="contact-form mt-5">
+            <div class="row mb-3">
+                <input type="hidden" value="@Model.ExamId" asp-for="@Model.ExamId" />
+                <input type="hidden" value="@Model.AdminId" asp-for="@Model.AdminId" />
+                <input type="hidden" value="@Model.PlantId" asp-for="@Model.PlantId" />
+                <input type="hidden" value="@Model.ExamName" asp-for="@Model.ExamName" />
+                <div class="text-center col-sm-6 py-2">
+                    <input type="submit" value="اضافه اسئله اختياري" class="btn btn-primary" asp-action="Create2" asp-controller="Exam" />
+                </div>
+                <div class="text-center col-sm-6 py-2">
+                    <input type="submit" value="اضافه اسئله صح وخطا" class="btn btn-info" asp-action="Create3" asp-controller="Exam">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

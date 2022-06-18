@@ -1,0 +1,52 @@
+﻿@model Thebes_Acadeny.LevelIndexViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اختار التخصص والمستوي و التيرم</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section">
+    <div class="container">
+        <form asp-action="PlantIndex2" asp-controller="Exam" class="contact-form mt-5" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <lable>اختر المستوي</lable>
+                    <select class="custom-select" asp-for="@Model.LevId" asp-items="@(new SelectList(Model.Levels , "LevelId" , "LevelName"))"></select>
+                    @if (ViewBag.lev != null)
+                    {
+                        <span class="text-danger">@ViewBag.lev</span>
+                    }
+                </div>
+
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <lable>اختر التخصص</lable>
+                    <select class="custom-select" asp-for="@Model.SpeId" asp-items="@(new SelectList(Model.Specialties , "SpecialtiesId" , "SpecialtiesName"))"></select>
+                    @if (ViewBag.spe != null)
+                    {
+                        <span class="text-danger">@ViewBag.spe</span>
+                    }
+                </div>
+
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <lable>اختر التيرم</lable><br />
+                    <select class="form-control" asp-for="@Model.Teid" asp-items="@(new SelectList(Model.Tearms , "Id" , "Name"))">
+                        <option value="0">اختر التيرم</option>
+                    </select>
+                    @if (ViewBag.te != null)
+                    {
+                        <span class="text-danger">@ViewBag.te</span>
+                    }
+                </div>
+
+                <input type="hidden" asp-for="@Model.AdmId" value="@Model.AdmId" />
+                <div class="col-sm-12 py-2 wow fadeInLeft">
+                    <input type="submit" class="btn btn-info" value="استكمال" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Thebes_Acadeny.CreateIndexExamViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تحديد الاجابات الصحيحه</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banne r -->
+
+
+<section id="testimonials" class="section-bg wow fadeInUp">
+    <div class="container sidebar-block">
+        <h1 class="sidebar-title" style="text-align:right">حدد الاجابه الصحيحه</h1>
+        <form asp-action="TrueAnswers2" asp-controller="Exam" enctype="multipart/form-data" >
+           
+                <div class="text-right">
+                    <h3>@Model.QuestionName</h3>
+                    <br />
+                    <input type="hidden" asp-for="@Model.QuestionName" value="@Model.QuestionName"/>
+                    <select asp-for="@Model.FirstTrueAnswer" class="form-control" required>
+                        <option value="@null"><span style="color:darkred;font:bold">اختر الاجابه الصحيحه</span></option>                       
+                        @foreach (var it in Model.Answerss)
+                        {
+                            <option value="@it.AnswerId">
+                                @it.AnswerTitle
+                            </option>
+                        }
+                    </select>
+                </div>
+                <hr />
+           
+            <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+            <br /><br />
+            <input type="submit" class="btn btn-info" value="حفظ" />
+        </form>
+    </div>
+</section>

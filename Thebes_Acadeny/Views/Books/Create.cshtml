@@ -1,0 +1,39 @@
+﻿@model Thebes_Acadeny.AddBookViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه كتاب جديد</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
+    <div class="container">
+
+        <form asp-action="Create" asp-controller="Books" asp-route-id="@Model.pid" asp-route-idad="@Model.AdminId" class="contact-form mt-5">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <label style="text-align:right">الاسم</label>
+                    <input type="text" asp-for="@Model.BookName" class="form-control">
+                    <span asp-validation-for="@Model.BookName" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="@Model.AdminId" value="@Model.AdminId" />
+                <input type="hidden" asp-for="@Model.pid" />
+           
+                <div class="col-6 py-2 wow fadeInUp">
+                    <label style="text-align:right">ضع الرابط هنا</label>
+                    <input type="text" asp-for="@Model.NewPdfUrl" required class="form-control">
+                    <span asp-validation-for="@Model.NewPdfUrl" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" value="اضافه" class="btn btn-info" />
+        </form>
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

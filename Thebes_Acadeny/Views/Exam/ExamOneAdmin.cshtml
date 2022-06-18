@@ -1,0 +1,40 @@
+﻿@model Thebes_Acadeny.ExamViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اختبارات</h1>
+        </div>
+    </div>
+</div>
+
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+
+        <div class="row portfolio-container">
+
+            @if (Model.Exams != null)
+            {
+                foreach (var item in Model.Exams)
+                {
+                    <a asp-action="DisplayExam" asp-controller="Exam" asp-route-id="@item.ExamId" asp-route-plid="@item.Plant.PlantId">
+                        <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                            <div class="portfolio-wrap">
+                                <figure style="background: -webkit-linear-gradient(129deg, rgb(0, 88, 167), rgb(45, 0, 65)); background: linear-gradient(129deg, rgb(0, 88, 167), rgb(45, 0, 65)); ">
+                                </figure>
+
+                                <div class="portfolio-info" style="overflow:auto">
+                                    <h4>@item.Title</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+
+        </div>
+
+    </div>
+</section>

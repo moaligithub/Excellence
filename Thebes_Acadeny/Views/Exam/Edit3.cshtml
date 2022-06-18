@@ -1,0 +1,54 @@
+﻿@model Thebes_Acadeny.ViewModel.EditQuestionViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل سؤال</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section">
+    <div class="container">
+
+        <form class="contact-form mt-5" asp-action="Edit3" asp-controller="Exam" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">ادخل السؤال</label>
+                    <input type="text" asp-for="@Model.question_True_Or_False_Name" value="@Model.question_True_Or_False_Name" class="form-control"/>
+                    <span asp-validation-for="@Model.question_True_Or_False_Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اضف صوره</label>
+                    <input type="file" asp-for="@Model.file" class="form-control"  accept="image/*">
+                    <span asp-validation-for="@Model.file" class="text-danger"></span>
+                </div>
+
+                @if (Model.imgurl != null)
+                {
+                    <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                        <img src="~/Tmb1/img/ExamsImages/@Model.imgurl" class="img-thumbnail" style="width:100%;height:100%" />
+                    </div>
+                }
+                
+                <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اختر الاجابه</label>
+                    <select asp-for="@Model.AnswerTrue" required class="form-control">
+                        <option value="">اختر اجابه</option>
+                        <option value="1">صح</option>
+                        <option value="2">خطا</option>
+                    </select>
+                </div>
+               
+                <input type="hidden" asp-for="@Model.imgurl" value="@Model.imgurl" />
+                <input type="hidden" asp-for="@Model.question_true_false_Id" value="@Model.question_true_false_Id"/>
+            </div>
+            <input type="submit" value="حفظ" class="btn btn-info" />
+        </form>
+    </div>
+</div>

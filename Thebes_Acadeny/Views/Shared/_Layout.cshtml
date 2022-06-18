@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Excellence-امتياز</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="~/Tmb1/img/favicon.png" rel="icon">
+    <link href="~/Tmb1/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/Tmb2/vendor/owl-carousel/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Tmb1/css/styleee.css" rel="stylesheet" />
+    <link href="~/Tmb2/css/maicons.css" rel="stylesheet" />
+    <link href="~/Tmb2/css/theme.css" rel="stylesheet" />
+    <link href="~/Tmb2/vendor/animate/animate.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="~/Tmb1/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Tmb2/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="~/Tmb1/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Tmb1/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Tmb1/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="~/Tmb1/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/Tmb1/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+      Theme Name: BizPage
+      Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+</head>
+
+<body>
+
+    <!--==========================
+      Header
+    ============================-->
+    <Div id="header">
+        <div class="container-fluid">
+
+            <div id="logo" class="pull-left">
+                <h1 style="color:white"><span style="color:#4cff00">|</span>امتياز</h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="#intro"><img src="~/Tmb1/img/logo.png" alt="" title="" /></a>-->
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a style="font-size:30px;text-decoration:none" asp-action="Index" asp-controller="Home">الرئيسيه</a></li>
+                    <li><a style="text-decoration:none;font-size:30px" asp-action="LoginAdmin" asp-controller="LoginControl">اشراف الموقع</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </Div><!-- #header -->
+    <div>
+        @RenderBody()
+    </div>
+
+    <div class="section-bg" style="background-color:#000000">
+        <div class="container" style="padding:40px">
+            <div style="font-size:20px">
+                جميع الحقوق محفوظه لدي محمد علي &copy;
+            </div>
+
+        </div>
+
+    </div>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
+    <!-- JavaScript Libraries -->
+    <script src="~/Tmb1/lib/jquery/jquery.min.js"></script>
+    <script src="~/Tmb1/~/Tmb1/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="~/Tmb1/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Tmb1/lib/easing/easing.min.js"></script>
+    <script src="~/Tmb1/lib/superfish/hoverIntent.js"></script>
+    <script src="~/Tmb1/lib/superfish/superfish.min.js"></script>
+    <script src="~/Tmb1/lib/wow/wow.min.js"></script>
+    <script src="~/Tmb1/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/Tmb1/lib/counterup/counterup.min.js"></script>
+    <script src="~/Tmb1/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/Tmb1/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="~/Tmb1/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="~/Tmb1/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="~/Tmb1/contactform/contactform.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="~/Tmb1/js/mainn.js"></script>
+
+</body>
+
+@RenderSection("Script", required: false)
+</html>

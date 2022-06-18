@@ -1,0 +1,51 @@
+﻿@model Thebes_Acadeny.AddPostViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه بوست جديد</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+
+
+<div class="page-section">
+    <div class="container">
+
+        <form asp-action="Create" asp-controller="Post" asp-route-idad="@Model.AdminId" asp-route-plid="@Model.pid" class="contact-form mt-5" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <label style="text-align:right">اكتب هنا</label>
+                    <textarea asp-for="@Model.Text" class="form-control" rows="5" placeholder="اكتب هنا"></textarea>
+                    <span asp-validation-for="@Model.Text" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="@Model.pid" />
+                @*<div class="col-sm-6 py-2 wow fadeInLeft">
+                        <lable>اختر الماده</lable>
+                        <select class="custom-select" asp-for="@Model.pid" asp-items="@(new SelectList(Model.Plants , "PlantId" , "PlantName"))"></select>
+                        @if (ViewBag.ErrorCate != null)
+                        {
+                            <span class="text-danger">@ViewBag.ErrorCate</span>
+                        }
+                    </div>*@
+
+                <input type="hidden"  asp-for="@Model.AdminId" value="@Model.AdminId"/>
+
+                <div class="col-6 py-2 wow fadeInUp">
+                    <label style="text-align:right">اضف صوره</label>
+                    <input type="file" asp-for="@Model.File" name="File" accept="image/*" class="form-control">
+                    <span asp-validation-for="@Model.File" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" value="اضافه" class="btn btn-info" />
+        </form>
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

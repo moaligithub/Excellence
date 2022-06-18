@@ -1,0 +1,54 @@
+﻿@model Thebes_Acadeny.AllUpDateSpecialtiesViewModel
+
+@{
+    ViewData["Title"] = "All Specialties";
+}
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل التخصصات</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div>
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+        <div class="text-center">
+            <a class="btn btn-primary" asp-action="AddSpecialties" asp-controller="Home" style="margin-bottom:3%">اضافه تخصص</a>
+        </div>
+        <div class="row portfolio-container">
+
+            @if (Model.Specialties.Count() != 0)
+            {
+                foreach (var item in Model.Specialties)
+                {
+                    <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                        <div class="portfolio-wrap">
+                            <figure style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); ">
+                            </figure>
+
+                            <div class="portfolio-info" style="overflow:auto">
+                                <div class="text-right" style="display:inline-block">
+                                    <h4>@item.SpecialtiesName</h4>
+                                </div>
+                                <div style="display:block ; float:left" class="text-right">
+                                    <a class="btn btn-primary" asp-controller="Home" asp-action="UpDateSpecialties" asp-route-id="@item.SpecialtiesId">تعديل</a>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteSpecialties" asp-route-id="@item.SpecialtiesId">حذف</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+            }
+
+
+        </div>
+
+    </div>
+</section><!-- #portfolio -->
+
+
+<!-- .page-section -->

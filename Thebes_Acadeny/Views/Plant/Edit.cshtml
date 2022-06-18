@@ -1,0 +1,36 @@
+﻿@model Thebes_Acadeny.AddPlantViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل ماده</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page-section">
+    <div class="container">
+
+        <form asp-action="Edit" asp-controller="Plant" class="contact-form mt-5" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-sm-12 py-2 wow fadeInLeft">
+                    <label style="text-align:right">اسم الماده</label>
+                    <input type="text" asp-for="@Model.Name" class="form-control" value="@Model.Name">
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="@Model.speid" value="@Model.speid" />
+                <input type="hidden" asp-for="@Model.LevelId" value="@Model.LevelId" />
+                <input type="hidden" asp-for="@Model.Tearm" value="@Model.Tearm" />
+
+                <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+            </div>
+            <input type="submit" value="حفظ" class="btn btn-info" />
+        </form>
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

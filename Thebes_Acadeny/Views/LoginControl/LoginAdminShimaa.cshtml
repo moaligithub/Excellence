@@ -1,0 +1,63 @@
+﻿@model Thebes_Acadeny.Models.Admin
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/css/maina.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background: #040038; height: 100%">
+    <div style="padding:80px">
+
+    </div>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <form asp-action="LoginAdminShimaa" asp-controller="LoginControl" method="post">
+                    <div class="login100-form-avatar">
+                        <img src="~/Tmb1/img/Admins/@Model.ImageUrl" alt="AVATAR">
+                    </div>
+
+                    <span class="login100-form-title p-t-20 p-b-45">
+                        @Model.FullName
+                    </span>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <h4 class="text-white" style="text-align:center; margin-bottom:2%">@ViewBag.Error</h4>
+                    }
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <input asp-for="@Model.UserName" class="input100" type="text" name="username" placeholder="Username">
+                        <span class="text-white" asp-validation-for="@Model.UserName"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <input asp-for="@Model.Password" class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="text-white" asp-validation-for="@Model.Password"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn p-t-10">
+                        <input type="submit" class="login100-form-btn" value="Login" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <div style="padding:80px">
+
+    </div>
+</body>
+</html>
+
+
+
+
+@section Script{
+    <partial name="Partial" />
+}

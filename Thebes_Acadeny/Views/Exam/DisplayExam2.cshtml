@@ -1,0 +1,128 @@
+﻿@model Thebes_Acadeny.ViewModel.AnswerUserViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body style="background-color:beige">
+    <div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+        <div class="banner-section">
+            <div class="container text-center wow fadeInUp">
+                <h1 class="font-weight-normal" style="color: #00ff92; font-family: Consolas">نتيجه التصحيح</h1>
+            </div> <!-- .container -->
+        </div> <!-- .banner-section -->
+    </div> <!-- .page-banne r -->
+
+    <div class="page-section">
+        <div class="container">
+            <div class="col-lg-12 sidebar-block wow fadeInUp">
+                @if (Model.Result >= 50)
+                {
+                    <h1 class="text-center mb-5 wow fadeInRight" style="font-family:Consolas" data-wow-delay="400ms">مبروك</h1>
+                }
+                else
+                {
+                    <h1 class="text-center mb-5 wow fadeInRight" style="font-family:Consolas" data-wow-delay="400ms">نتاسف لك</h1>
+                }
+
+                <div class="text-right col-sm-12 py-2">
+                    @if (Model.Result >= 50)
+                    {
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">@Model.FirstName</h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">تهانينا  </h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">لقد قمت باجتياز الاختبار بنجاح</h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">نتمني لك المزيد من التفوق</h4>
+                        <div style="clear:both"></div>
+                    }
+                    else
+                    {
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">@Model.FirstName</h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">نتاسف لك </h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">لم تتمكن من اجتياز الاختبار</h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">نتمني لك حظا سعيدا</h4>
+                        <div style="clear:both"></div>
+                    }
+
+                    <h4 style="font-family: Consolas">وذالك طبقا للنتائج التاليه</h4>
+                    <hr />
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td>@Model.FirstName @Model.LastName</td>
+                                <td class="table-active">اسم الطالب</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.PlantName</td>
+                                <td class="table-active">اسم الماده</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Spe</td>
+                                <td class="table-active">اسم التخصص</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Level</td>
+                                <td class="table-active">المستوي</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Result %</td>
+                                <td class="table-active">الدرجه المئويه</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.m</td>
+                                <td class="table-active">التقدير</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br />
+                    <div class="text-right">
+                        <h4 style="float: right; display: inline-block; font-family: Consolas">التوقيع</h4>
+                        <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> / </h4>
+                        <h4 style="float: right; display: inline-block; font-family: Consolas ">@Model.AdminName</h4>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+
+                @if (Model.Result != 100)
+                {
+                    <form asp-action="Details_false" asp-controller="Exam">
+                        <div class="col-lg-12 sidebar-block wow fadeInRight">
+                            <div class="row justify-content-center">
+                                
+                                @{ int que = 0;}
+                                @foreach (var q in Model.QuestionId)
+                                {
+                                    <input type="hidden" asp-for="@Model.QuestionId[que]" value="@Model.QuestionId[que]" />
+                                    que++;
+                                }
+
+                                @{ int ques = 0;}
+                                @foreach (var qt in Model.Question_trueOrFalseId)
+                                {
+                                    <input type="hidden" asp-for="@Model.Question_trueOrFalseId[ques]" value="@Model.Question_trueOrFalseId[ques]" />
+                                    ques++;
+                                }
+
+                                @{ int ans = 0;}
+                                @foreach(var an in Model.AnId)
+                                {
+                                    <input type="hidden" asp-for="@Model.AnId[ans]" value="@Model.AnId[ans]" />
+                                    ans++;
+                                }
+                                <input type="hidden" asp-for="@Model.FirstName" value="@Model.FirstName" />
+                                <input type="submit" class="btn btn-info" value="عرض اخطائك" />
+                            </div>
+                        </div>
+                    </form>
+                }
+
+            </div>
+    </div>
+</body>
+</html>

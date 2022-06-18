@@ -1,0 +1,39 @@
+﻿@model Thebes_Acadeny.ViewModel.UrlViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل رابط الموقع</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+
+
+<div class="page-section">
+    <div class="container">
+
+        <form asp-action="Edit" asp-controller="UrlWebSite" class="contact-form mt-5" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <h5 style="text-align:right">: الرابط القديم</h5>
+                    <a href="@Model.Url"><h6>@Model.Url</h6></a>
+                </div>
+               
+                <div class="col-6 py-2 wow fadeInUp">
+                    <h5 style="text-align:right">الرابط الجديد</h5>
+                    <input type="text" asp-for="@Model.NewUrl" class="form-control">
+                </div>
+
+                <input type="hidden" asp-for="@Model.UrlId" value="@Model.UrlId"/>
+            </div>
+            <input type="submit" value="حفظ" class="btn btn-info" />
+        </form>
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

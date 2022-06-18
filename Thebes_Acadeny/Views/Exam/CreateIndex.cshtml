@@ -1,0 +1,50 @@
+﻿@model Thebes_Acadeny.CreateIndexExamViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تحديد الاجابات الصحيحه</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banne r -->
+
+
+<section id="testimonials" class="section-bg wow fadeInUp">
+    <div class="container sidebar-block">
+        <h1 class="sidebar-title" style="text-align:right">حدد الاجابه الصحيحه</h1>
+        <form asp-action="TrueAnswers" asp-route-AdminId="@ViewBag.AdminId" asp-route-PlantId="@ViewBag.PlantId" asp-controller="Exam" enctype="multipart/form-data" method="post">
+            @{ 
+                int i = 0;
+            }
+            @foreach (var item in Model.Questionss)
+            {
+
+                <div class="text-right">
+                    <h3>@item.Title</h3>
+                    <br />
+                    @if (item.img != null)
+                    {
+                        <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                            <img src="~/Tmb1/img/ExamsImages/@item.img" class="img-thumbnail" style="width:100%;height:100%" />
+                        </div>
+                        <br />
+                    }
+                    <select asp-for="@Model.TrueAnswer[i]" required class="form-control">
+                        <option value="">حدد اجابه</option>
+                        @foreach (var it in Model.Answerss.Where(a => a.QuestionId == item.QuestionId))
+                        {
+                            <option value="@it.AnswerId">
+                                @it.AnswerTitle
+                            </option>
+                        }
+                    </select>
+                </div>
+                    i++;
+                <hr />
+            }
+            <input type="hidden" asp-for="@Model.ExamId" value="@Model.Examm.ExamId" />
+            <br /><br />
+            <input type="submit" class="btn btn-info" value="حفظ" />
+        </form>
+    </div>
+</section>

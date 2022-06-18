@@ -1,0 +1,142 @@
+﻿@model Thebes_Acadeny.DetailsExamViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تصحيح اخطائك</h1>
+        </div>
+    </div>
+</div>
+
+<section id="testimonials" class="section-bg wow fadeInUp">
+    @if (Model.Questions != null)
+    {
+        <div class="container sidebar-block">
+            <div class="text-right col-sm-12 py-2">
+                <h4 style="float: right; display: inline-block; font-family: Consolas">مرحبا يا</h4>
+                <h4 style="float: right; display: inline-block; font-family: Consolas">@Model.FirstName</h4>
+                <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                <h4 style="float: right; display: inline-block; font-family: Consolas">الاجابه المظلله بالون الاحمر هيه الاجابه الخاطئه الخاصه بك</h4>
+                <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas"> .. </h4>
+                <h4 style="float: right; display: inline-block; font-family: Consolas">بينما الاجابه المظلله بالون الاصفر هيه الاجابه الصحيحه</h4>
+                <h4 style="float: right; display: inline-block; margin-left: 5px; margin-right: 5px; font-family: Consolas "> .. </h4>
+                <h4 style="float: right; display: inline-block; font-family: Consolas ">بالتوفيق يا</h4>
+                <h4 style="float: right; display: inline-block; font-family: Consolas ">@Model.FirstName</h4>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    }
+    
+    <div class="container sidebar-block">
+        @{
+            int count1 = 1;
+        }
+        @if (Model.Questions != null)
+        {
+            <h2 class="text-center" style="font-family: Consolas">الاسئله الاختياري</h2>
+
+            @foreach (var item in Model.Questions)
+            {
+                <div class="text-right">
+                    <h4 style="display:inline-block;float:right">@count1</h4>
+                    <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                    <h4 style="display:inline-block; float:right">@item.Title</h4>
+                    <div style="clear:both"></div>
+                    <br />
+
+                    @if (item.img != null)
+                    {
+                        <img src="~/Tmb1/img/ExamsImages/@item.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                        <br /><br />
+                    }
+
+                    @{
+                        int count2 = 1;
+                    }
+
+                    @foreach (var ite in Model.Answers.Where(a => a.QuestionId == item.QuestionId))
+                    {
+                        @if (ite.boolAnswer == true)
+                        {
+                            <h6 style="display:inline-block;float:right">@count2</h6>
+                            <h6 style="display: inline-block; float: right; margin-left: 5px; margin-right: 5px"> - </h6>
+                            <h6 style="display:inline-block; float:right;background-color:yellow">@ite.AnswerTitle</h6>
+                            <div style="clear:both"></div>
+                        }
+                        else if (ite.boolAnswer == false)
+                        {
+                            if (ite.AnswerId == Model.False_1[count1 - 1])
+                            {
+                                <h6 style="display:inline-block;float:right">@count2</h6>
+                                <h6 style="display: inline-block; float: right; margin-left: 5px; margin-right: 5px"> - </h6>
+                                <h6 style="display:inline-block; float:right;background-color:red">@ite.AnswerTitle</h6>
+                                <div style="clear:both"></div>
+                            }
+                            else
+                            {
+                                <h6 style="display:inline-block;float:right">@count2</h6>
+                                <h6 style="display: inline-block; float: right; margin-left: 5px; margin-right: 5px"> - </h6>
+                                <h6 style="display:inline-block; float:right;">@ite.AnswerTitle</h6>
+                                <div style="clear:both"></div>
+                            }
+
+                        }
+
+                        count2++;
+                        <br />
+                    }
+                </div>
+
+                count1++;
+                <hr />
+            }
+        }
+
+        <br />
+
+        @if (Model.Question_True_Or_Falses != null)
+        {
+            <h2 class="text-center" style="font-family: Consolas">اسئله صح وخطا</h2>
+            @foreach (var item2 in Model.Question_True_Or_Falses)
+            {
+                string boo = string.Empty;
+                if (item2.Answer == true)
+                {
+                    boo = "صح";
+                }
+                else
+                {
+                    boo = "خطا";
+                }
+                <div class="text-right">
+                    <h4 style="display:inline-block;float:right">@count1</h4>
+                    <h4 style="display:inline-block;float:right;margin-left:5px;margin-right:5px"> - </h4>
+                    <h4 style="display:inline-block; float:right">@item2.Title</h4>
+                    <h4 style="display:inline-block; float:right;margin-left:10px;margin-right:10px">( <span style="background-color: yellow">@boo</span> )</h4>
+                    @if (item2.Answer == true)
+                    {
+                        <span class="text-danger" style="display:inline-block;float:right;margin-right:5px">وليس</span>
+                        <span class="text-danger" style="display:inline-block; float:right;margin-left:10px;margin-right:10px">( خطا )</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger" style="display:inline-block;float:right;margin-right:5px">وليس</span>
+                        <span class="text-danger" style="display:inline-block; float:right;margin-left:10px;margin-right:10px">( صح )</span>
+                    }
+
+                    <div style="clear:both"></div>
+                    <br />
+                    @if (item2.img != null)
+                    {
+                        <img src="~/Tmb1/img/ExamsImages/@item2.img" class="img-thumbnail" style="width:100%;height:100%;float:right" />
+                        <br /><br />
+                    }
+                    <hr />
+                </div>
+
+                count1++;
+            }
+        }
+
+    </div>
+</section>

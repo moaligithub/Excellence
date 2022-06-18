@@ -1,0 +1,41 @@
+﻿@model Thebes_Acadeny.DetailsVideoViewModel
+
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">@Model.VideoAdmin.Text</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section section-bg">
+    <div class="container">
+        <div class="col-lg-12 sidebar-block wow fadeInUp">
+            <div style="display:block" class="text-center">
+                <article class="blog-details">
+                    <div class="img-place custom-img-1">
+                        <img src="~/Tmb1/img/Admins/@Model.Admin.ImageUrl" style="width:200px" class="circle-shape" alt="">
+                    </div>
+                    <br><hr>
+                    <div style="text-align: center;">
+                        <h1>@Model.Admin.FullName</h1>
+                    </div>
+
+                    <hr>
+                    <div class="text-center wow fadeInDown">
+                        <a asp-action="Profile" asp-controller="Admin" asp-route-id="@Model.Admin.AdminId" style="text-decoration:none" class="btn btn-outline-primary">عرض الصفحه الشخصيه</a>
+                    </div>
+
+                </article>
+            </div>
+
+        </div>
+
+        <div class="sidebar-block">
+            <video src="~/Tmb1/Videos/@Model.VideoAdmin.VideoUrl" controls style="width:100%;height:500px;border:double 10px black;border-radius:2%;background-color:black;margin-bottom:3%" poster="~/Tmb1/img/InShot_20211019_140959143.jpg"></video>
+        </div>
+
+    </div>    
+</div>

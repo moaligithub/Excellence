@@ -1,0 +1,53 @@
+﻿@model Thebes_Acadeny.AddExamViewModel_1
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اضافه امتحان جديد</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
+    <div class="container">
+
+        <form class="contact-form mt-5" enctype="multipart/form-data" asp-controller="Exam">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">ادخل السؤال</label>
+                    <input type="text" asp-for="@Model.Qusetion" class="form-control" value="">
+                    <span asp-validation-for="@Model.Qusetion" class="text-danger"></span>
+                </div>
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                        <input type="text" asp-for="@Model.Answer[i]" class="form-control" value="">
+                        <span asp-validation-for="@Model.Answer[i]" class="text-danger"></span>
+                    </div>
+                }
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اضف صوره</label>
+                    <input type="file" asp-for="@Model.file" class="form-control"  accept="image/*">
+                    <span asp-validation-for="@Model.file" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="@Model.AdminId" value="@Model.AdminId" />
+                <input type="hidden" asp-for="@Model.PlantId" value="@Model.PlantId" />
+                <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+
+            </div>
+            <input type="submit" asp-action="Cre3" value="استكفاء" class="btn btn-danger" />
+            <input type="submit" asp-action="Cre2" value="اضافه اسئله اخري" class="btn btn-info" />
+        </form>
+
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

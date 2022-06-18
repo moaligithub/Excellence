@@ -1,0 +1,36 @@
+﻿@model Thebes_Acadeny.Models.MessagesUser
+
+@{
+    ViewData["Title"] = "Message";
+}
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">راسلنا الان</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section">
+    <div class="container">
+
+        <form asp-action="Message" asp-controller="Home" class="contact-form mt-5" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="row mb-3">
+
+                <div class="col-12 py-2 wow fadeInUp">
+                    <textarea style="text-align:right; font-size:30px" asp-for="@Model.MessageText" class="form-control" rows="5" placeholder="اكتب هنا"></textarea>
+                    <input type="hidden" asp-for="@Model.MessageUserId" />
+                    <span asp-validation-for="@Model.MessageText" class="text-danger"></span>
+                </div>
+            </div>
+            <input style="font-size:20px" type="submit" value="اضغط هنا للارسال" class="btn btn-success" />
+        </form>
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

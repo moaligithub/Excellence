@@ -1,0 +1,60 @@
+﻿@model Thebes_Acadeny.ViewModel.EditQuestionViewModel
+
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">تعديل سؤال</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
+    <div class="container">
+
+        <form class="contact-form mt-5" enctype="multipart/form-data" asp-action="Edit2" asp-controller="Exam">
+            <div class="row mb-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">ادخل السؤال</label>
+                    <input type="text" asp-for="@Model.QusetionName" class="form-control" value="@Model.QusetionName">
+                    <span asp-validation-for="@Model.QusetionName" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="@Model.QuestionId" value="@Model.QuestionId" />
+                @{ int i = 0;}
+                @foreach (var item in Model.Answer)
+                {
+                    <div class="col-sm-6 py-2 wow fadeInLeft" style="text-align:right">
+                        <input type="text" asp-for="@Model.Answer[i]" class="form-control" value="@item">
+                        <span asp-validation-for="@Model.Answer" class="text-danger"></span>
+                    </div>
+                    i++;
+                }
+
+
+                <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                    <label style="text-align:right">اضف صوره</label>
+                    <input type="file" asp-for="@Model.file" class="form-control"  accept="image/*">
+                    <span asp-validation-for="@Model.file" class="text-danger"></span>
+                </div>
+                @if (Model.imgurl != null)
+                {
+                    <div class="col-sm-12 py-2 wow fadeInLeft" style="text-align:right">
+                        <img src="~/Tmb1/img/ExamsImages/@Model.imgurl" class="img-thumbnail" style="width:100%;height:100%" />
+                    </div>
+                }
+
+                <input type="hidden" asp-for="@Model.ExamId" value="@Model.ExamId" />
+                <input type="hidden" asp-for="@Model.imgurl" value="@Model.imgurl" />
+
+            </div>
+            <input type="submit" value="استكمال" class="btn btn-info" />
+        </form>
+
+    </div>
+</div>
+
+@section Script{
+    <partial name="Partial" />
+}

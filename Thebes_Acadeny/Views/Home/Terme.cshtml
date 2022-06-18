@@ -1,0 +1,43 @@
+﻿
+<div class="page-banner " style="background: -webkit-linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0)); background: linear-gradient(-67deg, rgb(1, 13, 70), rgb(87, 0, 0))">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="font-weight-normal" style="color:#00ff92">اختار التيرم</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="portfolio" class="section-bg">
+    <div class="container">
+        
+        <div class="row portfolio-container">
+            <a asp-action="Index" asp-controller="Plant" asp-route-levid="@ViewBag.lev" asp-route-speid="@ViewBag.spe" asp-route-teid="1">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-84deg, rgb(0, 20, 91), rgb(72, 74, 0)); background: linear-gradient(-84deg, rgb(0, 20, 91), rgb(72, 74, 0)); ">
+                        </figure>
+
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>التيرم الاول</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a asp-action="Index" asp-controller="Plant" asp-route-levid="@ViewBag.lev" asp-route-speid="@ViewBag.spe" asp-route-teid="2">
+                <div class="col-lg-6 col-md-6 portfolio-item filter-app wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure style="background: -webkit-linear-gradient(-84deg, rgb(0, 20, 91), rgb(72, 74, 0)); background: linear-gradient(-84deg, rgb(0, 20, 91), rgb(72, 74, 0)); ">
+                        </figure>
+
+                        <div class="portfolio-info" style="overflow:auto">
+                            <h4>التيرم الثاني</h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
